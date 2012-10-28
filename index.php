@@ -98,11 +98,12 @@
 		
 		function loadpost() {
 			
-			var perma = $(this).attr("rel");
-			var postid = $(this).attr("id");
-			var postitle = $(this).attr("title");
+			//removed successive 'var' calls
+			var perma = $(this).attr("rel"),
+				postid = $(this).attr("id"),
+				postitle = $(this).attr("title"); //consider changing var name
 			
-			$('#'+postid).parent().parent().addClass('loader');
+			$(this).parent().parent().addClass('loader'); //changed '#'+postid to 'this'
 			
 			$("#post").load(''+perma+' #post', function() {
 				$('#gopost').fadeOut(300);
@@ -112,6 +113,7 @@
 					$('#post').show('slide', {direction: 'left'}, 600, function() {
 						$('#'+postid).parent().parent().removeClass('loader');
 						window.location.hash = "/"+postitle;
+						$("title").html(postitle); //Added line to change title upon loading new page
 						twttr.widgets.load()
 					});
 				});
