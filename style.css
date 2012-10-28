@@ -1,0 +1,205 @@
+/*
+Theme Name: Glider
+Description: A minimal, responsive, text-focused theme for Wordpress
+Author: Tom Creighton
+Author URI: http://tomcreighton.com
+Version: 1.0
+*/
+
+
+body {
+	font-family: 'Alegreya', serif;
+	margin: 0px;
+	padding: 0px;
+	color: #222;
+	background: #eee;
+	position: relative;
+	-webkit-font-smoothing: antialiased;
+	-webkit-text-size-adjust: none;
+}
+
+a {
+	color: #007e9e;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.content a:hover {
+	text-decoration: underline;
+}
+
+.loader {
+	background: url(loader.gif) no-repeat right center;	
+}
+
+ul#content {
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
+}
+
+ul#content > li {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+}
+
+.content {
+	width: 50%;
+	max-width: 680px;
+	padding: 60px 0;
+	margin: 0 auto;
+}
+
+p {
+	font-size: 18px;
+	line-height: 36px;
+	padding: 0;
+	margin: 0 0 18px 0;
+}
+
+#post ol, #post ul {
+	font-size: 18px;
+	line-height: 36px;
+	padding: 0 0 0 18px;
+	margin: 0 0 18px 0;
+}
+
+pre {
+	font-size: 18px;
+	margin: 0 0 18px 0;
+	font-family: "Courier New", Courier, monospace;
+	white-space: pre-line;	
+}
+
+h1 {
+	font-weight: normal;
+	text-align: center;
+	font-size: 56px;
+	line-height: 56px;
+	padding: 0 20px;
+	margin: 0 0 36px 0;
+}
+
+h2 {
+	font-weight: normal;
+	font-size: 24px;
+	line-height: 24px;
+	padding: 0;
+	margin: 0 0 4px 0;
+}
+
+.shift {
+	color: #222;
+	border: none;
+	font-size: 48px;
+	cursor: pointer;
+	position: fixed;
+	top: 45%;
+	height: 50px;
+}
+
+#gopost {
+	left: 20px;
+	display: none;
+}
+
+#goarchive {
+	right: 20px;
+}
+
+#archive {
+	display: none;
+}
+
+#archive ul {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+
+#archive li {
+	padding: 12px 4px;
+	margin: 0;
+	list-style: none;
+	font-size: 12px;
+	border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+#archive li:last-child {
+	border: none;
+}
+
+#archive li span {
+	text-transform: uppercase;
+}
+
+#hello {
+	font-weight: bold;
+	line-height: 24px;
+	border-bottom: 1px solid rgba(0,0,0,0.1);
+	margin: 0 0 88px 0;
+	padding: 0 12px 12px 12px;
+	text-align: center;
+}
+
+#footer {
+	text-align: center;
+	font-size: 12px;
+	opacity: 0.5;
+	margin: 0;
+	padding: 20px 0 30px 0;
+}
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+
+
+.content {
+	width: 80%;
+}
+
+p {
+	font-size: 36px;
+	line-height: 72px;
+	padding: 0;
+	margin: 0 0 36px 0;
+}
+
+h1 {
+	font-size: 112px;
+	line-height: 112px;
+	padding: 0 40px;
+	margin: 0 0 72px 0;
+}
+
+h2 {
+	font-size: 48px;
+	line-height: 48px;
+	margin: 0 0 8px 0;
+}
+
+#archive li {
+	font-size: 24px;
+}
+
+#hello {
+	font-size: 30px;
+	line-height: 36px;
+}
+
+}
+
+
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+
+.content {
+	width: 70%;
+}
+
+
+
+}
+
