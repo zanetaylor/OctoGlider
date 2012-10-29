@@ -105,7 +105,7 @@
 			
 			$(this).parent().parent().addClass('loader'); //changed '#'+postid to 'this'
 			
-			$("#post").load(perma + ' #post', function() {
+			$("#post").load(perma + ' #post', function() { //removed empty quotation
 				$('#gopost').fadeOut(300);
 				$('#archive').hide('slide', {direction: 'right'}, 600, function() {
 					$("#post").scrollTop(0);
