@@ -101,11 +101,11 @@
 			//removed successive 'var' calls
 			var perma = $(this).attr("rel"),
 				postid = $(this).attr("id"),
-				postitle = $(this).attr("title"); //consider changing var name
+				postitle = $(this).attr("title"); //consider changing variable name to posttitle
 			
 			$(this).parent().parent().addClass('loader'); //changed '#'+postid to 'this'
 			
-			$("#post").load(''+perma+' #post', function() {
+			$("#post").load(perma + ' #post', function() {
 				$('#gopost').fadeOut(300);
 				$('#archive').hide('slide', {direction: 'right'}, 600, function() {
 					$("#post").scrollTop(0);
@@ -113,7 +113,7 @@
 					$('#post').show('slide', {direction: 'left'}, 600, function() {
 						$('#'+postid).parent().parent().removeClass('loader');
 						window.location.hash = "/"+postitle;
-						$("title").html(postitle); //Added line to change title upon loading new page
+						$("title").html(postitle); //Added line to update title upon loading new post
 						twttr.widgets.load()
 					});
 				});
