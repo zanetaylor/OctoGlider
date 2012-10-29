@@ -76,7 +76,7 @@
 
 
 <script>
-	jQuery(function($) { //changed document.ready to jQuery
+	jQuery(function($) {
 		
 		function goarchive() {
 			$('#goarchive').fadeOut(300);
@@ -98,14 +98,13 @@
 		
 		function loadpost() {
 			
-			//removed successive 'var' calls
 			var perma = $(this).attr("rel"),
 				postid = $(this).attr("id"),
-				postitle = $(this).attr("title"); //consider changing variable name to posttitle
+				postitle = $(this).attr("title");
 			
-			$(this).parent().parent().addClass('loader'); //changed '#'+postid to 'this'
+			$(this).parent().parent().addClass('loader');
 			
-			$("#post").load(perma + ' #post', function() { //removed empty quotation
+			$("#post").load(perma + ' #post', function() {
 				$('#gopost').fadeOut(300);
 				$('#archive').hide('slide', {direction: 'right'}, 600, function() {
 					$("#post").scrollTop(0);
@@ -113,7 +112,7 @@
 					$('#post').show('slide', {direction: 'left'}, 600, function() {
 						$('#'+postid).parent().parent().removeClass('loader');
 						window.location.hash = "/"+postitle;
-						$("title").html(postitle); //Added line to update title upon loading new post
+						$("title").html(postitle);
 						twttr.widgets.load()
 					});
 				});
