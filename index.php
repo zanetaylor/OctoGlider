@@ -76,7 +76,7 @@
 
 
 <script>
-	$(document).ready(function() {
+	jQuery(function($) { //changed document.ready to jQuery
 		
 		function goarchive() {
 			$('#goarchive').fadeOut(300);
@@ -129,7 +129,7 @@
 		
 
 						
-	});
+	})(jQuery);
 </script>
 
 
