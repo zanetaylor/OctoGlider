@@ -157,12 +157,16 @@ wp_enqueue_script( 'jquery-ui-effects-slide', 'http://jquery-ui.googlecode.com/s
 		
 		$(document).keydown(function(ev) {
 			if(ev.which === 39) {
-				goarchive();
+				if ( $post.is(':visible') ) {
+					goarchive();
+				}				
 				return false;
 			}
 			
 			if(ev.which === 37) {
-				gopost();
+				if ( $archive.is(':visible') ) {
+					gopost();
+				}
 				return false;
 			}
 		});
