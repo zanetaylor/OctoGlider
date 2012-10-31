@@ -156,13 +156,11 @@ wp_enqueue_script( 'jquery-ui-effects-slide', 'http://jquery-ui.googlecode.com/s
 			
 			// Left arrow key
 		    if (isLeftArrow && $post.is(':visible')) { 
-		       console.log("left pressed");
 			   gopost();
 		    }
 			
 			// Right arrow key
 		    if (isRightArrow && $archive.is(':visible')) { 
-		       console.log("right pressed");
 			   goarchive();
 		    }
 		
