@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="<?php bloginfo( 'charset' ); ?>" />
+<title>{% if page.title %}{{ page.title }} - {% endif %}{{ site.title }}</title>
+
+<link href='http://fonts.googleapis.com/css?family=Alegreya:400italic,700italic,400,700' rel='stylesheet' type='text/css'>
+
+<link href="{{ root_url }}/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+
+<script src="{{ root_url }}/javascripts/modernizr-2.0.js"></script>
+
+<script>
+  if(window.location.hash) {
+    var hash = window.location.hash;
+    var hashtourl = hash.substring(2)
+    window.location.href = "/"+hashtourl;
+  }
+</script>
+
+</head>
+
+<body>
+
+{% include header.html %}
+
+<a class="shift" id="goarchive">&rarr;</a>
+<a class="shift" id="gopost">&larr;</a>
+
+<ul id="content">
+  <li id="post">
+    
+    <div class="content">
+      
+      {{ content }}
+      
+    </div>
+    
+    <div id="footer">
+      Using the <a href="http://tomcreighton.com/glider-theme">Glider</a> theme.
+    </div>
+                        
+  </li>
+  
+  <li id="archive">
+    
+    <div class="content">
+      
+      <ul>
+        {% for post in site.posts reverse %}
+        <li><h2><a href="{{ root_url }}{{ post.url }}">{{post.title}}</a></h2> <span>time</span></li>
+        {% endfor %}
+      </ul>
+      
+    </div>
+                        
+  </li>
+  
+</ul>
+
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+
+<script src="http://jquery-ui.googlecode.com/svn/tags/latest/ui/jquery.effects.core.js"></script>
+<script src="http://jquery-ui.googlecode.com/svn/tags/latest/ui/jquery.effects.slide.js"></script>
+
+<script>
+  jQuery(function($) {
+    
+    function goarchive() {
+      $('#goarchive').fadeOut(300);
+      $('#post').hide('slide', {direction: 'left'}, 600, function() {
+        $("#archive").scrollTop(0);
+        $('#archive').show('slide', {direction: 'right'}, 600);
+        $('#gopost').fadeIn(300);
+      });
+    };
+    
+    function gopost() {
+      $('#gopost').fadeOut(300);
+      $('#archive').hide('slide', {direction: 'right'}, 600, function() {
+        $("#post").scrollTop(0);
+        $('#post').show('slide', {direction: 'left'}, 600);
+        $('#goarchive').fadeIn(300);
+      });
+    };
+    
+    function loadpost() {
+      
+      var perma = $(this).attr("rel"),
+        postid = $(this).attr("id"),
+        postitle = $(this).attr("title");
+      
+      $(this).parent().parent().addClass('loader');
+      
+      $("#post").load(perma + ' #post', function() {
+        $('#gopost').fadeOut(300);
+        $('#archive').hide('slide', {direction: 'right'}, 600, function() {
+          $("#post").scrollTop(0);
+          $('#goarchive').fadeIn(300);
+          $('#post').show('slide', {direction: 'left'}, 600, function() {
+            $('#'+postid).parent().parent().removeClass('loader');
+            window.location.hash = "/"+postitle;
+            $("title").html(postitle);
+            twttr.widgets.load()
+          });
+        });
+        
+      });
+    }
+    
+    $('#goarchive').live("click", goarchive);
+    
+    $('#gopost').live("click", gopost);
+    
+    $("#archive a").live("click", loadpost);
+    
+
+            
+  })(jQuery);
+</script>
+
+</body>
+</html>
