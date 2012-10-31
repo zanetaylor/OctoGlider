@@ -5,7 +5,6 @@
 <title><?php echo get_bloginfo('name'); ?></title>
 
 <?php
-// remove included jquery, add the one from CDN
 wp_deregister_script( 'jquery' );
 wp_enqueue_script( 'jquery', 'http://code.jquery.com/jquery-latest.js' );
 
@@ -69,11 +68,11 @@ wp_enqueue_script( 'jquery-ui-effects-slide', 'http://jquery-ui.googlecode.com/s
 			
 			<ul>
 				<?php 
-				$my_query = new WP_Query( array( "nopaging"=>true,"post__not_in" => array( $do_not_duplicate  ) )); 
+				$my_query = new WP_Query( array( "nopaging"=>true ) ); 
 				while ($my_query->have_posts()) : 
 					$my_query->the_post();
 				?>
-					<li><h2><a rel="<? the_permalink(); ?>" id="<? the_id(); ?>" title="<?php echo( basename(get_permalink()) ); ?>"><?php the_title(); ?></a></h2> <span><?php the_time('F j Y') ?></span></li>
+					<li><h2><a rel="<? the_permalink(); ?>" id="<? the_id(); ?>" title="<?php echo( basename( get_permalink() ) ); ?>"><?php the_title(); ?></a></h2> <span><?php the_time('F j Y') ?></span></li>
 				<?php endwhile; wp_reset_postdata(); ?>
 			</ul>
 			
@@ -139,7 +138,6 @@ wp_enqueue_script( 'jquery-ui-effects-slide', 'http://jquery-ui.googlecode.com/s
 					}, 600, function () {
 						$('#' + postid).parent().parent().removeClass('loader');
 						window.location.hash = '/' + postitle;
-						$('title').html(postitle);
 						if (typeof twttr != 'undefined') {
 							twttr.widgets.load()
 						}
@@ -154,7 +152,7 @@ wp_enqueue_script( 'jquery-ui-effects-slide', 'http://jquery-ui.googlecode.com/s
 
 		$archive.find('a').live('click', loadpost);
 
-		/**
+		/*
 		 * Right/Left Arrow Key Navigation
 		 * Easily toggle between post and archive view.
 		 */
