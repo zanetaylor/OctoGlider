@@ -152,33 +152,22 @@ wp_enqueue_script( 'jquery-ui-effects-slide', 'http://jquery-ui.googlecode.com/s
 
 		$archive.find('a').live('click', loadpost);
 
-		/*
-		 * Right/Left Arrow Key Navigation
-		 * Easily toggle between post and archive view.
-		 */
-		var isLeftArrow = false;
-		var isRightArrow = false;
-		$(document).keydown(function keydownCallback(ev) {
-
-			isLeftArrow = ev.keyCode === 37 ? true : false;
-			isRightArrow = ev.keyCode === 39 ? true : false;
-
-			if (isLeftArrow || isRightArrow) {
-				ev.preventDefault();
-			}
-
-			// Left arrow key
-			if (isLeftArrow && $gopost.is(':visible')) {
-				gopost();
-			}
-
-			// Right arrow key
-			if (isRightArrow && $goarchive.is(':visible')) {
+		
+		/* arrow key navigation */
+		
+		$(document).keydown(function(ev) {
+			if(ev.which === 39) {
 				goarchive();
+				return false;
 			}
-
-			return false;
+			
+			if(ev.which === 37) {
+				gopost();
+				return false;
+			}
 		});
+		
+		
 	});
 
 </script>
