@@ -85,7 +85,7 @@ wp_enqueue_script( 'jquery-ui-effects-slide', 'http://jquery-ui.googlecode.com/s
 
 
 <script>
-	jQuery(function($) {
+	$(document).ready(function() {
 		
 		function goarchive() {
 			$('#goarchive').fadeOut(300);
@@ -135,9 +135,42 @@ wp_enqueue_script( 'jquery-ui-effects-slide', 'http://jquery-ui.googlecode.com/s
 		
 		$("#archive a").live("click", loadpost);
 		
+		
+		
+		/**
+		 * Right/Left Arrow Key Navigation
+		 * Easily toggle between post and archive view.
+		 */
+ 		var $archive = $("#goarchive");
+ 		var $post = $("#gopost");
+		var isLeftArrow = false;
+		var isRightArrow = false;
+		$(document).keydown(function keydownCallback(ev) {
+			
+			isLeftArrow = ev.keyCode === 37 ? true : false;
+			isRightArrow = ev.keyCode === 39 ? true : false;
 
-						
-	})(jQuery);
+			if (isLeftArrow || isRightArrow) {
+				ev.preventDefault();
+			}
+			
+			// Left arrow key
+		    if (isLeftArrow && $post.is(':visible')) { 
+		       console.log("left pressed");
+			   gopost();
+		    }
+			
+			// Right arrow key
+		    if (isRightArrow && $archive.is(':visible')) { 
+		       console.log("right pressed");
+			   goarchive();
+		    }
+		
+			return false;
+		});		
+	});
+	
+	
 </script>
 <?php wp_footer(); ?>
 
